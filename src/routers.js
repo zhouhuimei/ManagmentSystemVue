@@ -6,11 +6,15 @@ import Login from './view/login.vue'
 const routers = [
     {
         path: '/login',
+        component: Login
+    },
+    {
+        path: '/home',
         component: Home
     },
     {
         path: '/',              //设置根路由
-        component: Login
+        component: Home
     },
     {
         path: '*',              //设置404页面
