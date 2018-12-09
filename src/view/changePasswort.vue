@@ -4,18 +4,22 @@
             <div class="login">
                 <div>
                     <div class="login_in">
-                        <span>用户名<i>：</i></span><input type="text" v-model.trim="uname" placeholder="请输入用户名"/>
-                        <div v-show="umflg" class="tips" id="login_tips">请输入用户名</div>
+                        <span>原密码<i>：</i></span><input type="text" v-model.trim="original" placeholder="请输入用户名"/>
+                        <div v-show="ordflg" class="tips">您输入的密码和原始密码不一致</div>
                     </div>
                     <div class="login_in">
-                        <span style="letter-spacing: 10px;">密码<i>:</i></span><input type="text" v-model.trim="password" placeholder="请输入密码"/>
-                        <div v-show="pwdflg" class="tips" id="password_tips">请输入正确密码</div>
+                        <span style="letter-spacing: 10px;">新密码<i>:</i></span><input type="text" v-model.trim="password" placeholder="请输入密码"/>
+                        <div v-show="pwflg" class="tips" id="password_tips">请输入大雨六位数的密码</div>
+                    </div>
+                    <div class="login_in">
+                        <span style="letter-spacing: 10px;">重复新密码<i>:</i></span><input type="text" v-model.trim="rpassword" placeholder="请输入密码"/>
+                        <div v-show="rpwflg" class="tips" id="">两次输入密码不一致</div>
                     </div>
                     <div class="login_in">
                         <button @click="loginClick">登录</button>
                     </div>
                     <div class="login_in">
-                        <router-link to="changePasswort">
+                        <router-link to="register">
                             注册
                         </router-link>
                         <!--<a href="register.vue">注册</a>-->
@@ -31,10 +35,12 @@
     export default {
         data() {
             return {
-                uname: '',
+                original: '',
                 password: '',
-                pwdflg: false,
-                umflg: false
+                rpassword: '',
+                ordflg: false,
+                pwflg: false,
+                rpwflg: false
             }
         },
         created() {
@@ -44,18 +50,20 @@
         },
         methods: {
             loginClick: function () {
-                //  let phoneReg = /(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/
-                if (this.uname == '') {
-                    this.umflg = true
+                if (this.original == '') {
+                    this.ordflg = true
                 } else {
-                    this.umflg = false
+                    this.ordflg = false
                 }
                 if (this.password.length < 6) {
-                    let dom = document.getElementById('password_tips')
-                    dom.innerHTML = '密码不能小于6位'
-                    this.pwdflg = true
+                    this.pwflg = true
                 } else {
-                    this.pwdflg = false
+                    this.pwflg = false
+                }
+                if (this.password !=this.rpassword) {
+                    this.rpwflg = true
+                } else {
+                    this.rpwflg = false
                 }
             }
         }

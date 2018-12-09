@@ -2,6 +2,8 @@
 import Home from './view/home.vue'
 import Page404 from './components/error/page404.vue'
 import Login from './view/login.vue'
+import Register from './view/register.vue'
+import ChangePassword from './view/changePasswort'
 
 const routers = [
     {
@@ -9,12 +11,20 @@ const routers = [
         component: Login
     },
     {
+        path: '/register',
+        component: Register
+    },
+    {
+        path:'/changePasswort',
+        component:ChangePassword
+    },
+    {
         path: '/home',
         component: Home
     },
     {
         path: '/',              //设置根路由
-        component: Home
+        component: Login
     },
     {
         path: '*',              //设置404页面

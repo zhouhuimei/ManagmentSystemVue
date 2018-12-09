@@ -11,17 +11,6 @@
             return {
                 msg: '我是home页'
             }
-        },
-        created() {
-
-        },
-        mounted() {
-            this.console()
-        },
-        methods: {
-            console() {
-                console.log(1)
-            }
         }
     }
 </script>
